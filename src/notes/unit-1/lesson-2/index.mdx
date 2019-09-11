@@ -7,3 +7,87 @@ slides: true
 ---
 import Layout from "../../../components/mdxLayout"
 export default Layout
+
+## Reading Files
+
+To read a file in Java you need to use the [File][1] object in conjunction with the [Scanner][2] object. 
+Scanner has a constructor that allows you to pass a file object and use it as if you were
+taking input from a user. When doing any sort of file processing you need to tell java that something 
+might go wrong, so in this case we say "main could throw an IOException".
+
+```java
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+
+public class FileReader {
+    public static void main(String[] args) throws IOException {
+        File file = new File("test.txt");
+        Scanner input = new Scanner(file);
+
+        while(input.hasNextLine()){
+            System.out.println(input.nextLine());
+        }
+    }
+}
+```
+
+## ArrayList 
+
+The [ArrayList][3] is a data structure in the java's `util` package. Its used when you want to keep track of a 
+set of data in a linear way. 
+
+```java
+import java.util.*;
+
+public class ArrayListClient {
+    public static void main(String[] args) {
+        ArrayList<String> names = new ArrayList<>();
+
+        names.add("Alice");
+        names.add("Bob");
+
+        System.out.println(names.get(1));
+    }
+}
+```
+
+## Printing the contents of a file backwards
+
+```java
+import java.io.*;
+import java.util.*;
+
+public class Reverse {
+    public static void main(String[] args) {
+        File file = new File("test.txt");
+        Scanner input = new Scanner(file);
+
+        ArrayList<String> contents = new ArrayList<>();
+
+        while(input.hasNextLine()) {
+            contents.add(input.nextLine());
+        }
+
+        for(int i = contents.size() - 1; i >= 0; i--) {
+            System.out.println(contents.get(i));
+        }
+    }
+}
+
+```
+
+## Additional Ways to deal with files / Write to files
+
+- [FileReader][4]
+- [BufferedReader][5]
+- [FileWriter][6]
+- [BufferedWriter][7]
+
+[1]:https://docs.oracle.com/javase/7/docs/api/java/io/File.html
+[2]:https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html
+[3]:https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
+[4]:https://docs.oracle.com/javase/7/docs/api/java/io/FileReader.html
+[5]:https://docs.oracle.com/javase/7/docs/api/java/io/BufferedReader.html
+[6]:https://docs.oracle.com/javase/7/docs/api/java/io/FileWriter.html
+[7]:https://docs.oracle.com/javase/7/docs/api/java/io/BufferedWriter.html
