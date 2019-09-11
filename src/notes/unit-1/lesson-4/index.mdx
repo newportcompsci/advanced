@@ -7,3 +7,74 @@ slides: true
 ---
 import Layout from "../../../components/mdxLayout"
 export default Layout
+
+## Continuing from yesterday...
+
+## Example 4
+
+```java
+public static int mystery(int[] arr, int x) {
+    int l = 0, r = arr.length - 1;
+    while(l <= r) {
+        int m = l + (r - l) / 2;
+
+        if (arr[m] == x) 
+            return m;
+        
+        if (arr[m] < x)
+            l = m + 1;
+        else 
+            r = m - 1;
+    }
+
+    return -1;
+}
+
+public static void main(String[] args) {
+    int[] values = {2, 4, 7, 10, 13, 18};
+    mystery(values, 4);
+}
+
+```
+
+- This is Binary Search which we know keeps cutting the search space in half
+- Without counting everything, this is O(log(N)) where log is base 2.
+
+
+## Merge Sort and Beyond
+
+Merge sort splits an array in half each time and looks at each element in 
+each half every time. 
+
+Again without looking at the algorithm we know this would be O(N*log(N))
+
+> Think back to the first activity how would you explain the complexity of that problem? 
+
+> Resource: [Merge Sort][5]
+
+## The Clique Problem (kind-of)
+
+This is known as a "hard" problem (or [NP-Complete][3]) and the only way to solve it would be to 
+use a "Brute Force" approach. 
+
+In Big-O notation this would be O(2^n)
+
+> As far as our class goes we won't really deal with these problems but its good to know they exist.
+
+> Sources: [Clique Problem][1], [Maximal Independent Set][2]
+
+## Extra Practice
+
+Work on [Practice It][4] problems:
+
+- BJP4 Self-Check 13.9
+- BJP4 Self-Check 13.10
+- BJP4 Self-Check 13.11
+- BJP4 Self-Check 13.12
+- BJP4 Self-Check 13.13
+
+[1]:https://en.wikipedia.org/wiki/Clique_problem
+[2]:https://en.wikipedia.org/wiki/Maximal_independent_set
+[3]:https://en.wikipedia.org/wiki/NP-completeness
+[4]:https://practiceit.cs.washington.edu
+[5]:https://www.geeksforgeeks.org/merge-sort/
