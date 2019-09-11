@@ -1,0 +1,94 @@
+import slideTheme from "../../components/slideTheme"
+export const theme = slideTheme
+
+# Reading Files and ArrayList
+
+---
+
+## Reading Files 
+
+To read a file we need two classes: File and Scanner. 
+
+[File Class](https://docs.oracle.com/javase/7/docs/api/java/io/File.html)
+
+[Scanner Class](https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html)
+
+---
+
+## Advanced Files
+
+[FileReader](https://docs.oracle.com/javase/7/docs/api/java/io/FileReader.html)
+
+[BufferedReader](https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html)
+
+[FileWriter](https://docs.oracle.com/javase/7/docs/api/java/io/FileWriter.html)
+
+[BufferedWriter](https://docs.oracle.com/javase/7/docs/api/java/io/BufferedWriter.html)
+
+---
+
+## File 
+
+`File` lives in the `java.io` package so we must have an import to use it.
+
+`public File(String pathName)`
+
+> Creates an instance of a file located at `pathName`
+
+`File` also has some fun methods associated with it: 
+
+| `method` | `description` |
+|----------|---------------|
+| `boolean isDirectory()` | returns true if it has files in it |
+| `boolean isFile()` | returns true if it is a file |
+| `boolean mkdir()` | creates a directory |
+| `boolean createNewFile()` | creates a file |
+| `boolean rename()` | renames the file |
+
+---
+
+## IOExceptions
+
+Anytime a file manipulates or changes values on disk, there is a chance
+that things could go wrong. To tell Java that this might occur, we must 
+tell Java that the method `throws IOException` 
+
+> You can also use `try/catch`
+
+---
+
+## Scanner
+
+`Scanner` is typically used for user input, but we can also read files with it. 
+We can find `Scanner` in the `java.util` package. 
+
+`public Scanner(File source)`
+
+`public Scanner(InputStream source)`
+
+> If we pass our file object to scanner we can treat a file the same way as user input!
+
+A quick refresher on `Scanner` API
+
+| method | description |
+|--------|-------------|
+| `boolean hasNext()` | true if there is more to read |
+| `String next()` | gets next word |
+| `String nextLine()` | gets next line, up to '\n' | 
+| `int nextInt()` | gets next integer |
+
+---
+
+## Where do I put the file? 
+
+Files are referenced from the root of your project
+
+> next to the `src` folder
+
+---
+
+## Your Task 
+
+- Look up the `List` and `ArrayList` API
+- Create a `.txt` with a list of words 
+- Write a program that reads in those words and prints them out in reverse. 
