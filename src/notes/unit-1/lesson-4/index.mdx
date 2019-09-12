@@ -2,8 +2,8 @@
 path: /unit-1/lesson-4
 start: 2019-09-10
 end: 2019-09-10
-title: "Lesson 1.04 - Space Complexity"
-slides: true
+title: "Lesson 1.04 - Complexity Continued"
+slides: false
 ---
 import Layout from "../../../components/mdxLayout"
 export default Layout
@@ -39,6 +39,10 @@ public static void main(String[] args) {
 
 - This is Binary Search which we know keeps cutting the search space in half
 - Without counting everything, this is O(log(N)) where log is base 2.
+
+> In general an algorithm is O(log(n)) if it takes constant time to reduce the 
+> problem by a fractional amount (typically 1/2). If it takes constant time 
+> to reduce the problem by a constant amount then the problem is merely O(n).
 
 
 ## Merge Sort and Beyond
