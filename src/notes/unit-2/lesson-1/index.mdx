@@ -1,0 +1,79 @@
+---
+path: /unit-2/lesson-1
+start: 2019-09-12
+end: 2019-09-12
+title: "Lesson 2.01 - The ArrayList"
+slides: true
+---
+import Layout from "../../../components/mdxLayout"
+export default Layout
+
+
+## ArrayIntList
+
+Using the concepts from the [List][3] interface we started implementing our own version of [ArrayList][1].
+
+We need to resize the values array anytime we run out of capacity, as long as we double the array 
+each time we run out of space we can claim that on average the add operation is O(1) ([Amoritized Analysis][4])
+
+```java
+public class ArrayIntList {
+    private static final int DEFAULT = 8;
+
+    private int[] values;
+    private int size;
+
+    public class ArrayIntList() {
+        this(DEFAULT);
+    }
+
+    public class ArrayIntList(int initialSize) {
+        this.values = new int[initialSize];
+    }
+
+    public boolean add(int value) {
+        if (this.size == this.values.length) {
+            int[] newValues = new [this.values.length * 2];
+
+            for (int i = 0; i < this.values.length; i++) {
+                newValues[i] = this.values[i];
+            }
+
+            this.values = newValues;
+        }
+
+        this.values[this.size] = value;
+        this.size++;
+
+        return true;
+    }
+
+    public int indexOf(int value) {
+        for (int i = 0; i < this.size; i++) {
+            if (this.values[i] == value) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+
+    public String toString() {
+        String result = "[";
+
+        for (int i = 0; i < this.size; i++) {
+            result += (this.values[i] + " ");
+        }
+
+        result += "]";
+
+        return result;
+    }
+}
+```
+
+[1]:https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+[2]:https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
+[3]:https://docs.oracle.com/javase/8/docs/api/java/util/List.html
+[4]:https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/

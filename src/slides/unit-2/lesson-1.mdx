@@ -1,0 +1,184 @@
+import slideTheme from "../../components/slideTheme"
+export const theme = slideTheme
+
+# The ArrayList
+
+---
+
+## ArrayList
+
+Last week we used an [ArrayList][1] to print the contents of a file in reverse
+
+```java 
+public static void main(String[] args) {
+    File file = new File("test.txt");
+    Scanner input = new Scanner(file);
+
+    ArrayList<String> contents = new ArrayList<>();
+
+    while(input.hasNextLine()) {
+        contents.add(input.nextLine());
+    }
+
+    for(int i = contents.size() - 1; i >= 0; i--) {
+        System.out.println(contents.get(i));
+    }
+}
+```
+
+---
+
+## Array Limitations 
+
+- Fixed-size
+- Adding or removing from middle is hard 
+- They don't have much build-in functionality (need [Arrays][2] class)
+
+---
+
+## Collections 
+
+**collection**: an object that stores data (i.e., A Data Structure)
+
+- the objects stored are called *elements*
+- some collections maintain ordering, some allow duplicates
+- typical operations are: add, remove, clear, contains (search), size
+
+---
+
+## Lists 
+
+[List][3]: A collection of elements with 0-based **indexes**
+
+- elements can be added to the front, back, or eleswhere 
+- a list has a **size** or the number of elements that have been added
+- Changes size as elements are added
+
+---
+
+## The List Interface
+
+| method |
+|--------|
+| add(value) |
+| add(index, value) |
+| clear() |
+| indexOf(value) |
+| get(index) |
+| remove(index) |
+| set(index, value) |
+| size() | 
+| toString() |
+
+---
+
+## `this` keyword
+
+**this**: A reference to the *implicit parameter* (the object on which a method/constructor is called)
+
+```java
+this.field; // refers to a field
+this.method(params); // refers to an instance method
+this(params); // refers to another constructor
+```
+
+---
+
+## Implement our Constructor 
+
+```java
+private int[] values;
+private int size;
+
+public ArrayIntList(int initialSize) {
+    this.values = new int[initialSize];
+    this.size = 0;
+}
+```
+
+--- 
+
+## Implement add (part 1)
+
+```java
+public boolean add(int value) {
+    this.values[this.size] = value;
+    this.size++;
+
+    return true;
+}
+```
+
+---
+
+## Debugging with toString 
+
+```java 
+public String toString() {
+    String result = "[";
+
+    for (int i = 0; i < this.size; i++) {
+        result += (this.values[i] + " ");
+    }
+
+    result += "]";
+
+    return result;
+}
+```
+
+---
+
+## Implement searching
+
+```java
+public int indexOf(int value) {
+    for (int i = 0; i < this.size; i++) {
+        if (this.values[i] == value) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+```
+
+---
+
+## What happens when we run out of room? 
+
+If we need to insert an item that goes beyond the bounds of our capacity then 
+we need to create a new array and copy all of the items over to the new array. 
+
+This single operation costs O(N) but if we double the array each time this occurs 
+infrequent enough that we can claim the average insert is O(1). 
+
+> This claim comes from some something called [Amoritized Analysis][4]
+
+--- 
+
+## Improved add 
+
+```java 
+public boolean add(int value) {
+    if (this.size == this.values.length) {
+        int[] newValues = new [this.values.length * 2];
+
+        for (int i = 0; i < this.values.length; i++) {
+            newValues[i] = this.values[i];
+        }
+
+        this.values = newValues;
+    }
+
+    this.values[this.size] = value;
+    this.size++;
+
+    return true;
+}
+```
+
+[1]:https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+[2]:https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
+[3]:https://docs.oracle.com/javase/8/docs/api/java/util/List.html
+[4]:https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/
