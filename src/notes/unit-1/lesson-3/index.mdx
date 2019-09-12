@@ -9,7 +9,7 @@ import Layout from "../../../components/mdxLayout"
 export default Layout
 
 
-## Example 1
+## Example 1 - Constant Time (O(1))
 
 ```java
 public static void mystery(int n) {
@@ -23,7 +23,7 @@ public static void main(String[] args) {
 
 > We say that this is a "constatnt time" algorithm, it runs one line of code no matter what the input is. 
 
-## Example 2
+## Example 2 - Linear Time (O(n))
 
 ```java
 public static void mystery(int[] numbers) {
@@ -45,7 +45,7 @@ public static void main(String[] args) {
 > we say this runs N + 1 times 
 
 
-## Example 3
+## Example 3 - Quadratic Time (O(n^2))
 
 ```java
 
@@ -69,6 +69,8 @@ public static void main(String[] args) {
 > In total we "kind-of" execute 100 + 10 + 1 lines of code or 111 lines of code
 
 > For a square matrix of size N x N we expect about N^2 + N + 1 lines of code to execute
+
+> **side-note** the sum of all numbers from 1 to N can be simplified as n*(n + 1) / 2 which is also O(n^2)!
 
 ## Asymptotic Analysis
 
